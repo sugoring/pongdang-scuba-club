@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" 
+     xmlns:atom="http://www.w3.org/2005/Atom" 
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>강원대학교 스쿠버다이빙 동아리 퐁당</title>
+    <description>강원대학교 스쿠버 다이빙 동아리 퐁당입니다. 강원대학교 재학생이라면 누구나 참여 가능한 춘천 스쿠버 다이빙 동아리입니다. 수영 실력과 상관없이 참여할 수 있습니다.</description>
+    <link>https://pongdang-coral.vercel.app</link>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 24 Mar 2025 12:00:00 +0900</lastBuildDate>
+    <pubDate>Mon, 24 Mar 2025 12:00:00 +0900</pubDate>
+    <ttl>60</ttl>
+    <atom:link href="https://pongdang-coral.vercel.app/feed.xml" rel="self" type="application/rss+xml" />
+    <image>
+      <url>https://pongdang-coral.vercel.app/logo.png</url>
+      <title>강원대학교 스쿠버다이빙 동아리 퐁당</title>
+      <link>https://pongdang-coral.vercel.app</link>
+    </image>
+    <category>스쿠버다이빙</category>
+    <category>강원대학교</category>
+    <category>동아리</category>
+    <category>춘천</category>
+    
+    <!-- 메인 페이지 항목 -->
+    <item>
+      <title>강원대학교 스쿠버다이빙 동아리 퐁당 소개</title>
+      <link>https://pongdang-coral.vercel.app/</link>
+      <guid isPermaLink="true">https://pongdang-coral.vercel.app/</guid>
+      <description>강원대학교 스쿠버 다이빙 동아리 퐁당은 강원대학교 재학생을 위한 스쿠버 동아리입니다. 수영 실력과 상관없이 참여 가능하며, 자체 강사진의 체계적인 교육을 받을 수 있습니다.</description>
+      <pubDate>Mon, 24 Mar 2025 12:00:00 +0900</pubDate>
+      <dc:creator>퐁당 운영진</dc:creator>
+      <category>소개</category>
+    </item>
+    
+    <!-- 특징 섹션 항목 -->
+    <item>
+      <title>퐁당의 특별함</title>
+      <link>https://pongdang-coral.vercel.app/#features</link>
+      <guid isPermaLink="true">https://pongdang-coral.vercel.app/#features</guid>
+      <description>수영 못해도 OK! 동아리 내 전문 강사를 통해 저렴하게 자격증을 취득하고 체계적인 교육을 받을 수 있으며, 방학 중 실제 바다에서 다이빙 실습을 진행합니다.</description>
+      <pubDate>Mon, 24 Mar 2025 10:00:00 +0900</pubDate>
+      <dc:creator>퐁당 운영진</dc:creator>
+      <category>특징</category>
+    </item>
+    
+    <!-- 활동 소식 항목 -->
+    <item>
+      <title>2025년 여름 바다 투어 안내</title>
+      <link>https://pongdang-coral.vercel.app/#summer-tour</link>
+      <guid isPermaLink="true">https://pongdang-coral.vercel.app/#summer-tour</guid>
+      <description>2025년 여름방학 동안 강원도 고성에서 진행되는 바다 다이빙 실습에 대한 안내입니다. 오픈워터 자격증 취득을 위한 필수 과정이며, 신입 회원들에게 추억을 선사합니다.</description>
+      <pubDate>Mon, 17 Mar 2025 09:00:00 +0900</pubDate>
+      <dc:creator>퐁당 운영진</dc:creator>
+      <category>활동소식</category>
+    </item>
+    
+    <!-- 동아리 가입 안내 항목 -->
+    <item>
+      <title>2025년 1학기 신입회원 모집</title>
+      <link>https://pongdang-coral.vercel.app/#join</link>
+      <guid isPermaLink="true">https://pongdang-coral.vercel.app/#join</guid>
+      <description>강원대학교 스쿠버 다이빙 동아리 퐁당에서 2025년 1학기 신입회원을 모집합니다. 회비는 신입 부원 4만원(회비포함), 기존 부원 3만원입니다. 첫 학기만 4만원이며 이후 학기부터는 3만원입니다.</description>
+      <pubDate>Mon, 10 Mar 2025 14:00:00 +0900</pubDate>
+      <dc:creator>퐁당 운영진</dc:creator>
+      <category>모집</category>
+    </item>
+    
+    <!-- 자격증 과정 항목 -->
+    <item>
+      <title>오픈워터 다이버 과정 안내</title>
+      <link>https://pongdang-coral.vercel.app/#certification</link>
+      <guid isPermaLink="true">https://pongdang-coral.vercel.app/#certification</guid>
+      <description>퐁당에서 제공하는 스쿠버 다이빙 초급 과정 안내입니다. 이론교육, 수영장교육, 바다실습 세 단계로 진행되며, 과정을 완료하면 국제적으로 인정받는 오픈워터 다이버 자격증을 취득할 수 있습니다.</description>
+      <pubDate>Mon, 03 Mar 2025 11:00:00 +0900</pubDate>
+      <dc:creator>퐁당 운영진</dc:creator>
+      <category>교육</category>
+    </item>
+  </channel>
+</rss>

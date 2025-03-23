@@ -70,30 +70,4 @@
     <mobile:mobile/>
   </url>
 
-  <!-- 이미지 자원 -->
-  <url>
-    <loc>https://pongdang-coral.vercel.app/assets/</loc>
-    <lastmod>2025-03-24T12:00:00+09:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
-  </url>
-
-  <!-- 외부 링크: 카카오톡 채널 -->
-  <url>
-    <loc>http://pf.kakao.com/_thdNxj</loc>
-    <lastmod>2025-03-24T12:00:00+09:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link rel="alternate" href="https://pongdang-coral.vercel.app/#contact"/>
-  </url>
-
-  <!-- 외부 링크: 인스타그램 -->
-  <url>
-    <loc>https://www.instagram.com/pongdang_knu_official</loc>
-    <lastmod>2025-03-24T12:00:00+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link rel="alternate" href="https://pongdang-coral.vercel.app/#contact"/>
-  </url>
-
 </urlset>
