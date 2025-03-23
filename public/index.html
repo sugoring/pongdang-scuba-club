@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko-KR" class="light">
+<html lang="ko-KR">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
@@ -8,8 +8,6 @@
       content="width=device-width, initial-scale=1, maximum-scale=5"
     />
     <meta name="theme-color" content="#0071e3" />
-    <meta name="color-scheme" content="light only" />
-    <meta name="supported-color-schemes" content="light" />
 
     <!-- 검색 엔진 인증 태그 -->
     <meta
@@ -77,7 +75,7 @@
     <meta property="og:url" content="https://pongdang-coral.vercel.app" />
     <meta
       property="og:title"
-      content="강원대학교 스쿠버다이빙 동아리 퐁당 | 춘천 춘천 스쿠버 다이빙"
+      content="강원대학교 스쿠버다이빙 동아리 퐁당 | 춘천 최고의 스쿠버 동아리"
     />
     <meta
       property="og:description"
@@ -111,7 +109,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="강원대학교 스쿠버다이빙 동아리 퐁당 | 춘천 춘천 스쿠버 다이빙"
+      content="강원대학교 스쿠버다이빙 동아리 퐁당 | 춘천 최고의 스쿠버 동아리"
     />
     <meta
       name="twitter:description"
@@ -169,36 +167,6 @@
       name="apple-mobile-web-app-status-bar-style"
       content="black-translucent"
     />
-
-    <!-- 다크 모드 제한 스크립트 -->
-    <script>
-      (function () {
-        // 강제로 라이트 모드 적용
-        document.documentElement.classList.add("light");
-        document.documentElement.classList.remove("dark");
-
-        // 사용자의 다크 모드 설정 변경 감지 및 라이트 모드 강제 적용
-        const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
-        function applyLightMode() {
-          document.documentElement.classList.add("light");
-          document.documentElement.classList.remove("dark");
-
-          // CSS 변수 설정으로 라이트 모드 색상 강제 적용
-          document.documentElement.style.setProperty("--bg-color", "#ffffff");
-          document.documentElement.style.setProperty("--text-color", "#000000");
-        }
-
-        // 초기 적용
-        applyLightMode();
-
-        // 사용자 설정 변경 시 다시 적용
-        mediaQuery.addEventListener("change", applyLightMode);
-
-        // 페이지 로드 시 적용
-        window.addEventListener("DOMContentLoaded", applyLightMode);
-      })();
-    </script>
 
     <!-- 구조화된 데이터 - 조직 정보 -->
     <script type="application/ld+json">
@@ -408,48 +376,11 @@
         }
       }
     </script>
-
-    <!-- 소셜 미디어 공유 이미지 스타일 -->
-    <style>
-      /* 공유될 때 보이는 이미지 스타일 */
-      .share-image {
-        display: block;
-        max-width: 100%;
-        height: auto;
-        margin: 0 auto;
-      }
-
-      /* 다크 모드 비활성화를 위한 전역 스타일 */
-      :root {
-        color-scheme: light only;
-        --bg-color: #ffffff;
-        --text-color: #000000;
-      }
-
-      /* 강제 라이트 모드 스타일 */
-      html {
-        background-color: #ffffff !important;
-        color: #000000 !important;
-      }
-
-      /* 강제 라이트 모드 미디어 쿼리 재정의 */
-      @media (prefers-color-scheme: dark) {
-        :root {
-          color-scheme: light only;
-        }
-
-        html,
-        body {
-          background-color: #ffffff !important;
-          color: #000000 !important;
-        }
-      }
-    </style>
   </head>
   <body>
     <noscript>
       <h1>강원대학교 스쿠버 다이빙 동아리 퐁당</h1>
-      <h2>강원대학교 춘천 스쿠버 다이빙 | 춘천 스쿠버다이빙</h2>
+      <h2>강원대학교 최고의 스쿠버 동아리 | 춘천 스쿠버다이빙</h2>
       <p>
         강원대학교 스쿠버 다이빙 동아리 퐁당입니다. 강원대학교 재학생이라면
         누구나 참여 가능한 춘천 스쿠버 다이빙 동아리입니다.
