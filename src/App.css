@@ -76,11 +76,7 @@ body {
   font-weight: 700;
   letter-spacing: -0.015em;
   margin-bottom: 8px;
-  background: linear-gradient(90deg, #0071e3, #40c8e0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
+  color: #0071e3; /* 단색으로 변경 */
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
@@ -555,15 +551,43 @@ img {
   }
 
   .gallery-container {
-    gap: 20px; /* 갤러리 항목 간 간격 줄임 */
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 10px 0;
+    gap: 15px;
   }
 
   .gallery-item {
+    flex: 0 0 auto;
+    width: 250px; /* 모바일에서 더 넓은 이미지 */
+    height: 180px; /* 가로로 더 긴 비율 */
+    scroll-snap-align: center;
+    min-width: 250px;
+    max-width: 300px;
+    aspect-ratio: 16/9; /* 와이드스크린 비율 */
+    margin: 0 10px;
+  }
+
+  .gallery-item img {
     width: 100%;
-    max-width: 400px;
-    margin: 0 auto 15px; /* 갤러리 항목 간 간격 조정 */
+    height: 100%;
+    object-fit: cover;
+    transition: none; /* 모바일에서 애니메이션 제거 */
+  }
+
+  .gallery-item:hover img {
+    transform: none; /* 호버 효과 제거 */
+  }
+
+  /* 스크롤바 숨기기 */
+  .gallery-container::-webkit-scrollbar {
+    display: none;
+  }
+  .gallery-container {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 
   .quote-text {
@@ -685,24 +709,14 @@ img {
 
 /* 모바일 터치 최적화 */
 @media (hover: none) and (pointer: coarse) {
-  .feature-card,
-  .gallery-item,
-  .social-button {
-    transition: transform 0.1s ease, box-shadow 0.1s ease;
+  .gallery-item {
+    transition: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   }
 
-  .feature-card:active,
-  .gallery-item:active,
-  .social-button:active {
-    transform: scale(0.98);
-  }
-
-  /* 모바일에서도 애니메이션 유지 */
-  .fade-in,
-  .slide-in,
-  .slide-in-delayed-1,
-  .slide-in-delayed-2 {
-    animation-play-state: running !important;
+  .gallery-item:active {
+    transform: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   }
 }
 
@@ -718,9 +732,11 @@ img {
   }
 
   .gallery-item {
-    margin: 0 auto 10px;
-    width: 90%; /* 컨테이너 폭의 90%만 사용 */
+    width: 220px;
+    height: 160px;
+    min-width: 220px;
     max-width: 250px;
+    margin: 0 8px;
   }
 }
 
