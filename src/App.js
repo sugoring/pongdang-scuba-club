@@ -298,7 +298,7 @@ function App() {
         <meta property="og:url" content={siteUrl} />
         <meta
           property="og:title"
-          content="강원대학교 스쿠버다이빙 동아리 퐁당 | 춘천 최고의 스쿠버 동아리"
+          content="강원대학교 스쿠버다이빙 동아리 퐁당 | 춘천 춘천 스쿠버 다이빙"
         />
         <meta
           property="og:description"
@@ -321,7 +321,7 @@ function App() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="강원대학교 스쿠버다이빙 동아리 퐁당 | 춘천 최고의 스쿠버 동아리"
+          content="강원대학교 스쿠버다이빙 동아리 퐁당 | 춘천 춘천 스쿠버 다이빙"
         />
         <meta
           name="twitter:description"
