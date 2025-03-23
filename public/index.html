@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko-KR">
+<html lang="ko-KR" class="light">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
@@ -8,6 +8,8 @@
       content="width=device-width, initial-scale=1, maximum-scale=5"
     />
     <meta name="theme-color" content="#0071e3" />
+    <meta name="color-scheme" content="light only" />
+    <meta name="supported-color-schemes" content="light" />
 
     <!-- 검색 엔진 인증 태그 -->
     <meta
@@ -83,6 +85,10 @@
     />
     <meta
       property="og:image"
+      content="https://pongdang-coral.vercel.app/assets/pic1.jpg"
+    />
+    <meta
+      property="og:image:secure_url"
       content="https://pongdang-coral.vercel.app/assets/pic1.jpg"
     />
     <meta
@@ -163,6 +169,36 @@
       name="apple-mobile-web-app-status-bar-style"
       content="black-translucent"
     />
+
+    <!-- 다크 모드 제한 스크립트 -->
+    <script>
+      (function () {
+        // 강제로 라이트 모드 적용
+        document.documentElement.classList.add("light");
+        document.documentElement.classList.remove("dark");
+
+        // 사용자의 다크 모드 설정 변경 감지 및 라이트 모드 강제 적용
+        const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+        function applyLightMode() {
+          document.documentElement.classList.add("light");
+          document.documentElement.classList.remove("dark");
+
+          // CSS 변수 설정으로 라이트 모드 색상 강제 적용
+          document.documentElement.style.setProperty("--bg-color", "#ffffff");
+          document.documentElement.style.setProperty("--text-color", "#000000");
+        }
+
+        // 초기 적용
+        applyLightMode();
+
+        // 사용자 설정 변경 시 다시 적용
+        mediaQuery.addEventListener("change", applyLightMode);
+
+        // 페이지 로드 시 적용
+        window.addEventListener("DOMContentLoaded", applyLightMode);
+      })();
+    </script>
 
     <!-- 구조화된 데이터 - 조직 정보 -->
     <script type="application/ld+json">
@@ -372,6 +408,43 @@
         }
       }
     </script>
+
+    <!-- 소셜 미디어 공유 이미지 스타일 -->
+    <style>
+      /* 공유될 때 보이는 이미지 스타일 */
+      .share-image {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
+      }
+
+      /* 다크 모드 비활성화를 위한 전역 스타일 */
+      :root {
+        color-scheme: light only;
+        --bg-color: #ffffff;
+        --text-color: #000000;
+      }
+
+      /* 강제 라이트 모드 스타일 */
+      html {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+      }
+
+      /* 강제 라이트 모드 미디어 쿼리 재정의 */
+      @media (prefers-color-scheme: dark) {
+        :root {
+          color-scheme: light only;
+        }
+
+        html,
+        body {
+          background-color: #ffffff !important;
+          color: #000000 !important;
+        }
+      }
+    </style>
   </head>
   <body>
     <noscript>
@@ -390,8 +463,29 @@
       <p>카카오톡: http://pf.kakao.com/_thdNxj</p>
       <p>인스타그램: https://www.instagram.com/pongdang_knu_official</p>
       <p>이 웹사이트를 이용하기 위해서는 JavaScript를 활성화해야 합니다.</p>
+
+      <!-- 이미지 노스크립트 대체 -->
+      <img
+        src="%PUBLIC_URL%/assets/pic1.jpg"
+        alt="강원대학교 스쿠버 다이빙 동아리 퐁당 단체 사진"
+        class="share-image"
+        width="800"
+        height="450"
+      />
     </noscript>
+
     <div id="root"></div>
+
+    <!-- 공유 미리보기 이미지를 위한 가시적 이미지 (실제 React 앱에서는 다룰 것) -->
+    <div id="share-preview" style="display: none">
+      <img
+        src="%PUBLIC_URL%/assets/pic1.jpg"
+        alt="강원대학교 스쿠버 다이빙 동아리 퐁당 단체 사진"
+        class="share-image"
+        width="1200"
+        height="630"
+      />
+    </div>
 
     <!-- 검색엔진 최적화를 위한 숨겨진 콘텐츠 -->
     <div style="display: none" aria-hidden="true">
@@ -418,5 +512,40 @@
         강원대학교 스쿠버다이빙 동아리 퐁당과 함께 바다 속 세상을 탐험해보세요!
       </p>
     </div>
+
+    <!-- 다크 모드 제한 추가 스크립트 -->
+    <script>
+      // 페이지 로드 후 다크 모드 방지 확인
+      document.addEventListener("DOMContentLoaded", function () {
+        // 다크 모드 감지 및 라이트 모드 강제 적용
+        function enforceLightMode() {
+          document.documentElement.classList.add("light");
+          document.documentElement.classList.remove("dark");
+          document.body.style.backgroundColor = "#ffffff";
+          document.body.style.color = "#000000";
+        }
+
+        // 초기 실행
+        enforceLightMode();
+
+        // 주기적으로 확인하여 다크 모드 전환 방지
+        setInterval(enforceLightMode, 1000);
+
+        // 소셜 미디어 공유 시 이미지 표시 최적화
+        const sharePreview = document.getElementById("share-preview");
+        if (sharePreview) {
+          // URL이 공유되는 경우 이미지가 보이도록 설정
+          if (
+            document.referrer &&
+            (document.referrer.includes("facebook.com") ||
+              document.referrer.includes("twitter.com") ||
+              document.referrer.includes("instagram.com") ||
+              document.referrer.includes("kakao.com"))
+          ) {
+            sharePreview.style.display = "block";
+          }
+        }
+      });
+    </script>
   </body>
 </html>

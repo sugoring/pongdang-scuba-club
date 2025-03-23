@@ -4,8 +4,69 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+// 다크모드 감지 및 비활성화
+const forceLightMode = () => {
+  // 다크모드 무효화를 위한 JavaScript
+  document.documentElement.style.colorScheme = "light";
+  document.documentElement.style.backgroundColor = "#ffffff";
+  document.documentElement.style.color = "#1d1d1f";
+  document.body.style.backgroundColor = "#ffffff";
+  document.body.style.color = "#1d1d1f";
+
+  // meta 태그 추가
+  const metaColorScheme = document.createElement("meta");
+  metaColorScheme.name = "color-scheme";
+  metaColorScheme.content = "light only";
+  document.head.appendChild(metaColorScheme);
+
+  const metaSupportedSchemes = document.createElement("meta");
+  metaSupportedSchemes.name = "supported-color-schemes";
+  metaSupportedSchemes.content = "light only";
+  document.head.appendChild(metaSupportedSchemes);
+
+  // 모든 강제 스타일 방지
+  document.documentElement.setAttribute("data-force-color-scheme", "light");
+
+  // CSS 변수 강제 적용
+  document.documentElement.style.setProperty(
+    "--background-color",
+    "#ffffff",
+    "important"
+  );
+  document.documentElement.style.setProperty(
+    "--text-color",
+    "#1d1d1f",
+    "important"
+  );
+  document.documentElement.style.setProperty(
+    "--secondary-color",
+    "#86868b",
+    "important"
+  );
+  document.documentElement.style.setProperty(
+    "--light-background",
+    "#f5f9fd",
+    "important"
+  );
+  document.documentElement.style.setProperty(
+    "--footer-background",
+    "#fbfbfd",
+    "important"
+  );
+};
+
+// 초기 실행 및 다크모드 변경 감지
+forceLightMode();
+if (window.matchMedia) {
+  const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  darkModeMediaQuery.addEventListener("change", forceLightMode);
+}
+
 // DOM이 완전히 로드된 후 실행
 document.addEventListener("DOMContentLoaded", () => {
+  // 다크모드 감지 재실행 (DOM 로드 후)
+  forceLightMode();
+
   // 루트 엘리먼트 가져오기
   const rootElement = document.getElementById("root");
 
@@ -45,31 +106,59 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 검색 엔진 메타 태그 설정
   setupSearchEngineMeta();
+
+  // MutationObserver를 사용하여 DOM 변경 감지 및 라이트 모드 강제 적용
+  setupDarkModeObserver();
 });
+
+// DOM 변경 감지 및 라이트 모드 강제 적용
+function setupDarkModeObserver() {
+  // 다크모드 관련 속성이나 클래스가 변경되는지 관찰
+  const observer = new MutationObserver((mutations) => {
+    let needsForceLightMode = false;
+
+    for (const mutation of mutations) {
+      if (
+        mutation.type === "attributes" &&
+        (mutation.attributeName === "class" ||
+          mutation.attributeName === "style" ||
+          mutation.attributeName === "data-theme")
+      ) {
+        needsForceLightMode = true;
+        break;
+      }
+    }
+
+    if (needsForceLightMode) {
+      forceLightMode();
+    }
+  });
+
+  // 문서 전체와 body 요소 관찰
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class", "style", "data-theme"],
+  });
+
+  observer.observe(document.body, {
+    attributes: true,
+    attributeFilter: ["class", "style", "data-theme"],
+  });
+}
 
 // 검색 엔진 메타 태그 설정 함수
 function setupSearchEngineMeta() {
-  // 검색 엔진 인증 태그 추가
-  if (process.env.REACT_APP_GOOGLE_VERIFICATION) {
-    const meta = document.createElement("meta");
-    meta.name = "google-site-verification";
-    meta.content = process.env.REACT_APP_GOOGLE_VERIFICATION;
-    document.head.appendChild(meta);
-  }
+  // Google 검색 엔진 인증 태그 추가
+  const googleMeta = document.createElement("meta");
+  googleMeta.name = "google-site-verification";
+  googleMeta.content = "hc4GzRqVd75nG-TG00f74DbtpelQ425_aUfAYFTbEFA";
+  document.head.appendChild(googleMeta);
 
   // 네이버 서치어드바이저 인증 태그 추가
-  if (process.env.REACT_APP_NAVER_VERIFICATION) {
-    const naverMeta = document.createElement("meta");
-    naverMeta.name = "naver-site-verification";
-    naverMeta.content = process.env.REACT_APP_NAVER_VERIFICATION;
-    document.head.appendChild(naverMeta);
-  } else {
-    // 하드코딩된 네이버 인증 태그 (환경 변수가 없는 경우)
-    const naverMetaFallback = document.createElement("meta");
-    naverMetaFallback.name = "naver-site-verification";
-    naverMetaFallback.content = "692f519e06cd140f805d94b2aa98d3c43cf7110a";
-    document.head.appendChild(naverMetaFallback);
-  }
+  const naverMeta = document.createElement("meta");
+  naverMeta.name = "naver-site-verification";
+  naverMeta.content = "692f519e06cd140f805d94b2aa98d3c43cf7110a";
+  document.head.appendChild(naverMeta);
 
   // 사이트맵 링크 추가
   const sitemapLink = document.createElement("link");
@@ -97,6 +186,24 @@ function updateOgImage() {
   }
 }
 
+// 이미지 로딩 이벤트 처리
+window.addEventListener("load", () => {
+  // lazy 로딩 이미지 로드 완료 시 클래스 추가
+  const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+  lazyImages.forEach((img) => {
+    if (img.complete) {
+      img.classList.add("loaded");
+    } else {
+      img.addEventListener("load", function () {
+        this.classList.add("loaded");
+      });
+    }
+  });
+
+  // 다크모드 비활성화 재적용
+  forceLightMode();
+});
+
 // 페이지 가시성 변경 시 성능 최적화
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "hidden") {
@@ -104,9 +211,11 @@ document.addEventListener("visibilitychange", () => {
     document.title = "강원대학교 스쿠버다이빙 동아리 퐁당 - 돌아오세요!";
   } else {
     // 사용자가 페이지로 돌아왔을 때 원래 제목 복원
-    document.title = "퐁당 - 강원대학교 스쿠버 다이빙 동아리 | 춘천 스쿠버";
+    document.title =
+      "강원대학교 스쿠버다이빙 동아리 퐁당 | 춘천 스쿠버 | 강원대 스쿠버동아리";
 
-    // 리소스 다시 로드 또는 필요한 작업 재개
+    // 다크모드 비활성화 재적용
+    forceLightMode();
   }
 });
 
