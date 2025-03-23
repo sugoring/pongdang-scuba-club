@@ -1,7 +1,7 @@
 {
   "short_name": "퐁당",
-  "name": "퐁당 - 강원대학교 스쿠버 다이빙 동아리",
-  "description": "강원대학교 스쿠버 다이빙 동아리 퐁당은 강원대학교 재학생이라면 누구나 참여할 수 있는 춘천 스쿠버 다이빙 동아리입니다.",
+  "name": "강원대학교 스쿠버다이빙 동아리 퐁당",
+  "description": "강원대학교 스쿠버 다이빙 동아리 퐁당입니다. 강원대학교 스쿠버 다이빙 동아리입니다.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -19,27 +19,69 @@
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
+    },
+    {
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
     }
   ],
-  "start_url": ".",
+  "id": "/",
+  "start_url": "/?source=pwa",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "portrait",
   "theme_color": "#0071e3",
   "background_color": "#ffffff",
+  "prefer_related_applications": false,
   "lang": "ko-KR",
-  "categories": ["education", "sports"],
-  "orientation": "portrait",
+  "dir": "ltr",
+  "categories": ["education", "sports", "lifestyle"],
   "screenshots": [
     {
-      "src": "screenshot1.png",
-      "type": "image/png",
-      "sizes": "1080x1920"
+      "src": "assets/pic1.jpg",
+      "type": "image/jpeg",
+      "sizes": "1920x1080",
+      "form_factor": "wide"
     }
   ],
+  "shortcuts": [
+    {
+      "name": "소개",
+      "url": "/#intro",
+      "description": "퐁당 동아리 소개"
+    },
+    {
+      "name": "갤러리",
+      "url": "/#gallery",
+      "description": "다이빙 활동 갤러리"
+    },
+    {
+      "name": "연락처",
+      "url": "/#contact",
+      "description": "연락처 정보"
+    }
+  ],
+  "serviceworker": {
+    "src": "/service-worker.js",
+    "scope": "/",
+    "use_cache": true
+  },
+  "share_target": {
+    "action": "/share",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "iarc_rating_id": "",
   "related_applications": [
     {
       "platform": "web",
-      "url": "https://pongdang.vercel.app"
+      "url": "https://pongdang-coral.vercel.app"
     }
-  ],
-  "prefer_related_applications": false
+  ]
 }

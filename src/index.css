@@ -1,6 +1,9 @@
+/* 최적화된 index.css - 강원대학교 스쿠버다이빙 동아리 퐁당 */
+/* SEO 및 성능을 위해 최적화 */
+
 /* 기본 CSS 변수 정의 - 일관된 디자인 시스템 */
 :root {
-  /* 색상 팔레트 */
+  /* 색상 팔레트 - 항상 라이트 모드 색상 유지 */
   --primary-color: #0071e3;
   --primary-gradient: linear-gradient(90deg, #0071e3, #40c8e0);
   --secondary-color: #86868b;
@@ -12,7 +15,7 @@
 
   /* 타이포그래피 */
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Helvetica, Arial, sans-serif;
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   --heading-line-height: 1.3;
   --body-line-height: 1.5;
 
@@ -38,18 +41,36 @@
   --border-radius-sm: 8px;
   --border-radius-md: 12px;
   --border-radius-lg: 18px;
+
+  /* 컨테이너 */
+  --container-width: 1200px;
+  --content-width: 1000px;
 }
 
-/* 기본 스타일 리셋 */
-* {
+/* 기본 스타일 리셋 - 성능 최적화 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+/* 초기 렌더링 최적화를 위한 content-visibility 적용 */
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 1000px; /* 추정 높이 */
 }
 
 html {
   font-size: 16px;
   scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  width: 100%;
+  /* 다크 모드 강제 비활성화 */
+  color-scheme: light only;
 }
 
 body {
@@ -60,11 +81,35 @@ body {
   background-color: var(--background-color);
   line-height: var(--body-line-height);
   overflow-x: hidden;
+  width: 100%;
+  position: relative;
   /* 모바일 새로고침 처리 */
   overscroll-behavior-y: none;
+  text-rendering: optimizeSpeed;
+  /* 화면 깨짐 방지 */
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  /* 다크 모드 전환 방지 */
+  forced-color-adjust: none;
 }
 
-/* 텍스트 선택 스타일 */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 접근성을 위한 포커스 스타일 */
+:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* 검색 엔진 최적화를 위한 텍스트 선택 스타일 */
 ::selection {
   background: rgba(0, 113, 227, 0.2);
   color: var(--primary-color);
@@ -76,73 +121,27 @@ code {
     monospace;
 }
 
-/* 접근성 포커스 스타일 */
-:focus-visible {
-  outline: 2px solid var(--primary-color);
-  outline-offset: 2px;
+/* 이미지 지연 로딩 최적화 */
+img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity var(--transition-normal);
 }
 
-/* 스크롤바 스타일 */
-::-webkit-scrollbar {
-  width: 14px;
-  height: 14px;
+img[loading="lazy"].loaded {
+  opacity: 1;
 }
 
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
+/* LCP 최적화 */
+img.hero-bg-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: opacity;
+  font-family: var(--font-family); /* alt 텍스트를 위한 접근성 개선 */
 }
 
-::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 7px;
-  border: 3px solid #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
-}
-
-/* 미디어 쿼리 기본값 */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* 다크 모드 지원 */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background-color: #000000;
-    --text-color: #f5f5f7;
-    --secondary-color: #a1a1a6;
-    --light-background: #1c1c1e;
-    --footer-background: #1c1c1e;
-    --quote-background: #0a0a0a;
-  }
-
-  img {
-    opacity: 0.9;
-  }
-
-  /* 다크 모드에서 스크롤바 스타일 */
-  ::-webkit-scrollbar-track {
-    background: #2c2c2e;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #6e6e73;
-    border: 3px solid #2c2c2e;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #8e8e93;
-  }
-}
-
-/* SEO를 위한 숨겨진 콘텐츠 스타일 */
+/* SEO를 위한 숨겨진 콘텐츠 스타일 - 검색 엔진에서만 표시 */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -158,47 +157,72 @@ code {
   appearance: none;
 }
 
-/* 이미지 최적화 */
-img {
-  max-width: 100%;
+/* 스크롤바 스타일 */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 6px;
+  border: 3px solid #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* 콘텐츠 랜더링 성능 최적화 */
+.fade-in {
+  will-change: opacity;
+  transform: translateZ(0); /* GPU 가속 */
+}
+
+.slide-in,
+.slide-in-delayed-1,
+.slide-in-delayed-2 {
+  will-change: transform;
+  transform: translateZ(0); /* GPU 가속 */
+  backface-visibility: hidden;
+}
+
+/* 검색 엔진 크롤러용 추가 스타일 */
+.bot-view .sr-only {
+  position: static;
+  width: auto;
   height: auto;
+  padding: var(--spacing-md) 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  border-width: 0;
+  appearance: auto;
   display: block;
-  font-style: italic; /* 이미지 로드 실패 시 대체 텍스트를 강조 */
-  font-size: 0.85em;
-  color: var(--secondary-color);
+  background-color: #f5f9fd;
+  color: #1d1d1f;
+  font-size: 16px;
+  line-height: 1.5;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-/* 이미지 지연 로딩 */
-img[loading="lazy"] {
-  transition: opacity var(--transition-normal);
-}
-
-/* 페이지 로드 중 상태 */
-.page-loading {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: var(--background-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  opacity: 1;
-  transition: opacity var(--transition-slow);
-}
-
-.page-loading.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* 프린트 최적화 */
+/* 인쇄 최적화 */
 @media print {
   body {
     color: #000;
     background: #fff;
+  }
+
+  section {
+    content-visibility: visible;
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
 
   a {
@@ -208,5 +232,147 @@ img[loading="lazy"] {
 
   @page {
     margin: 2cm;
+  }
+}
+
+/* 축소된 모션 선호 사용자를 위한 설정 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 다크 모드 미디어 쿼리 무시하기 위한 오버라이드 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* 원래의 라이트 모드 색상 유지 */
+    --background-color: #ffffff;
+    --text-color: #1d1d1f;
+    --secondary-color: #86868b;
+    --light-background: #f5f9fd;
+    --footer-background: #fbfbfd;
+    --quote-background: #000000;
+  }
+
+  body {
+    color: var(--text-color);
+    background-color: var(--background-color);
+  }
+
+  img {
+    opacity: 1; /* 다크 모드에서도 이미지 투명도 유지 */
+  }
+
+  /* 다크 모드에서도 라이트 모드 스크롤바 유지 */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border: 3px solid #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+  }
+}
+
+/* 컨테이너 클래스 - 재사용성 및 반응형 최적화 */
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-md);
+  padding-right: var(--spacing-md);
+}
+
+.content-container {
+  width: 100%;
+  max-width: var(--content-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-md);
+  padding-right: var(--spacing-md);
+}
+
+/* 레이아웃 유틸리티 - 마진 축소 */
+.my-xl {
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.py-xl {
+  padding-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-xl);
+}
+
+/* 성능 최적화된 반응형 디자인 - 최소한의 미디어 쿼리 */
+@media (max-width: 1200px) {
+  :root {
+    --container-width: 992px;
+    --content-width: 850px;
+  }
+}
+
+@media (max-width: 992px) {
+  :root {
+    --container-width: 768px;
+    --content-width: 700px;
+    --spacing-xl: 40px;
+    --spacing-xxl: 80px;
+  }
+
+  section {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 800px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --container-width: 576px;
+    --content-width: 540px;
+    --spacing-xl: 30px;
+    --spacing-xxl: 60px;
+  }
+
+  html {
+    font-size: 15px;
+  }
+
+  section {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 600px;
+  }
+}
+
+@media (max-width: 576px) {
+  :root {
+    --container-width: 100%;
+    --content-width: 100%;
+    --spacing-xl: 25px;
+    --spacing-xxl: 50px;
+  }
+
+  html {
+    font-size: 14px;
+  }
+
+  .container,
+  .content-container {
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+  }
+
+  section {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 500px;
   }
 }
