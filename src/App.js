@@ -302,7 +302,7 @@ function App() {
         />
         <meta
           property="og:description"
-          content="강원대학교 재학생이라면 누구나 참여할 수 있는 강원대학교 스쿠버 다이빙 동아리. 수영 실력 상관없이 참여 가능. 춘천에서 스쿠버다이빙을 시작하세요!"
+          content=" 강원대학교 스쿠버 다이빙 동아리. 수영 실력 상관없이 참여 가능. 춘천에서 스쿠버다이빙을 시작하세요!"
         />
         <meta property="og:image" content={`${siteUrl}/assets/pic1.jpg`} />
         <meta
@@ -325,7 +325,7 @@ function App() {
         />
         <meta
           name="twitter:description"
-          content="강원대학교 재학생이라면 누구나 참여할 수 있는 강원대학교 스쿠버 다이빙 동아리. 수영 실력 상관없이 참여 가능."
+          content=" 강원대학교 스쿠버 다이빙 동아리. 수영 실력 상관없이 참여 가능."
         />
         <meta name="twitter:image" content={`${siteUrl}/assets/pic1.jpg`} />
         <meta
@@ -403,7 +403,6 @@ function App() {
         <p>
           강원대학교 춘천캠퍼스에 위치한 퐁당은 활발한 활동을 펼치고 있는
           동아리로, 수영 실력과 상관없이 스쿠버 다이빙을 배우고 싶은 강원대학교
-          재학생이라면 누구나 참여할 수 있습니다.
         </p>
         <h3>연락처 정보</h3>
         <p>
