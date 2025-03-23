@@ -1,13 +1,212 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* 기본 CSS 변수 정의 - 일관된 디자인 시스템 */
+:root {
+  /* 색상 팔레트 */
+  --primary-color: #0071e3;
+  --primary-gradient: linear-gradient(90deg, #0071e3, #40c8e0);
+  --secondary-color: #86868b;
+  --text-color: #1d1d1f;
+  --background-color: #ffffff;
+  --light-background: #f5f9fd;
+  --footer-background: #fbfbfd;
+  --quote-background: #000000;
+
+  /* 타이포그래피 */
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  --heading-line-height: 1.3;
+  --body-line-height: 1.5;
+
+  /* 간격 */
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 20px;
+  --spacing-lg: 30px;
+  --spacing-xl: 60px;
+  --spacing-xxl: 120px;
+
+  /* 그림자 */
+  --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.08);
+
+  /* 애니메이션 */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* 테두리 반경 */
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 18px;
 }
 
+/* 기본 스타일 리셋 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  line-height: var(--body-line-height);
+  overflow-x: hidden;
+  /* 모바일 새로고침 처리 */
+  overscroll-behavior-y: none;
+}
+
+/* 텍스트 선택 스타일 */
+::selection {
+  background: rgba(0, 113, 227, 0.2);
+  color: var(--primary-color);
+}
+
+/* 코드 블록 스타일 */
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/* 접근성 포커스 스타일 */
+:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* 스크롤바 스타일 */
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 7px;
+  border: 3px solid #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* 미디어 쿼리 기본값 */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 다크 모드 지원 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #000000;
+    --text-color: #f5f5f7;
+    --secondary-color: #a1a1a6;
+    --light-background: #1c1c1e;
+    --footer-background: #1c1c1e;
+    --quote-background: #0a0a0a;
+  }
+
+  img {
+    opacity: 0.9;
+  }
+
+  /* 다크 모드에서 스크롤바 스타일 */
+  ::-webkit-scrollbar-track {
+    background: #2c2c2e;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #6e6e73;
+    border: 3px solid #2c2c2e;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8e8e93;
+  }
+}
+
+/* SEO를 위한 숨겨진 콘텐츠 스타일 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* 이미지 최적화 */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  font-style: italic; /* 이미지 로드 실패 시 대체 텍스트를 강조 */
+  font-size: 0.85em;
+  color: var(--secondary-color);
+}
+
+/* 이미지 지연 로딩 */
+img[loading="lazy"] {
+  transition: opacity var(--transition-normal);
+}
+
+/* 페이지 로드 중 상태 */
+.page-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity var(--transition-slow);
+}
+
+.page-loading.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 프린트 최적화 */
+@media print {
+  body {
+    color: #000;
+    background: #fff;
+  }
+
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  @page {
+    margin: 2cm;
+  }
 }

@@ -1,3 +1,19 @@
-# https://www.robotstxt.org/robotstxt.html
+# 모든 로봇에게 적용
 User-agent: *
-Disallow:
+
+# 크롤링 허용 (Vercel 환경에서 사용되는 기본 폴더 구조)
+Allow: /
+Allow: /about
+Allow: /gallery
+Allow: /contact
+Allow: /faq
+Allow: /static/
+Allow: /images/
+Allow: /assets/
+
+# 관리자 페이지 크롤링 금지
+Disallow: /admin/
+Disallow: /_next/static/
+
+# 사이트맵 위치
+Sitemap: https://pongdang.vercel.app/sitemap.xml

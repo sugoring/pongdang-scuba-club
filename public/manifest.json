@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "퐁당",
+  "name": "퐁당 - 강원대학교 스쿠버 다이빙 동아리",
+  "description": "강원대학교 스쿠버 다이빙 동아리 퐁당은 강원대학교 재학생이라면 누구나 참여할 수 있는 춘천 스쿠버 다이빙 동아리입니다.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,16 +11,35 @@
     {
       "src": "logo192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
       "src": "logo512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#0071e3",
+  "background_color": "#ffffff",
+  "lang": "ko-KR",
+  "categories": ["education", "sports"],
+  "orientation": "portrait",
+  "screenshots": [
+    {
+      "src": "screenshot1.png",
+      "type": "image/png",
+      "sizes": "1080x1920"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "web",
+      "url": "https://pongdang.vercel.app"
+    }
+  ],
+  "prefer_related_applications": false
 }
