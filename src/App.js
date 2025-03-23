@@ -11,7 +11,7 @@ const structuredData = {
   url: "https://pongdang-coral.vercel.app",
   logo: "/logo.png",
   description:
-    "강원대학교 스쿠버 다이빙 동아리 퐁당입니다. 강원대학교 재학생이라면 누구나 참여 가능한 춘천 스쿠버 다이빙 동아리입니다.",
+    "강원대학교 스쿠버 다이빙 동아리 퐁당입니다. 강원대학교 춘천 스쿠버 다이빙 동아리입니다.",
   address: {
     "@type": "PostalAddress",
     addressLocality: "춘천시",
@@ -167,7 +167,7 @@ const sportsClubData = {
   logo: "/logo.png",
   image: "/assets/pic1.jpg",
   description:
-    "강원대학교 스쿠버 다이빙 동아리 퐁당입니다. 강원대학교 재학생이라면 누구나 참여 가능한 춘천 스쿠버 다이빙 동아리입니다. 수영 실력과 상관없이 참여할 수 있습니다.",
+    "강원대학교 스쿠버 다이빙 동아리 퐁당입니다. 강원대학교 춘천 스쿠버 다이빙 동아리입니다. 수영 실력과 상관없이 참여할 수 있습니다.",
   address: {
     "@type": "PostalAddress",
     addressLocality: "춘천시",
@@ -248,7 +248,7 @@ function App() {
         </title>
         <meta
           name="description"
-          content="강원대학교 스쿠버 다이빙 동아리 퐁당입니다. 강원대학교 재학생이라면 누구나 참여 가능한 춘천 스쿠버 다이빙 동아리로, 자체 강사 보유 및 바다 투어를 진행합니다."
+          content="강원대학교 스쿠버 다이빙 동아리 퐁당입니다. 강원대학교 춘천 스쿠버 다이빙 동아리로, 자체 강사 보유 및 바다 투어를 진행합니다."
         />
         <meta
           name="keywords"
