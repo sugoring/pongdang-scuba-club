@@ -1,147 +1,65 @@
-/* 최적화된 index.css - 강원대학교 스쿠버다이빙 동아리 퐁당 */
-/* SEO 및 성능을 위해 최적화 */
+/* 글꼴 임포트 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap");
 
-/* 기본 CSS 변수 정의 - 일관된 디자인 시스템 */
-:root {
-  /* 색상 팔레트 - 항상 라이트 모드 색상 유지 */
-  --primary-color: #0071e3;
-  --primary-gradient: linear-gradient(90deg, #0071e3, #40c8e0);
-  --secondary-color: #86868b;
-  --text-color: #1d1d1f;
-  --background-color: #ffffff;
-  --light-background: #f5f9fd;
-  --footer-background: #fbfbfd;
-  --quote-background: #000000;
-
-  /* 타이포그래피 */
-  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  --heading-line-height: 1.3;
-  --body-line-height: 1.5;
-
-  /* 간격 */
-  --spacing-xs: 8px;
-  --spacing-sm: 12px;
-  --spacing-md: 20px;
-  --spacing-lg: 30px;
-  --spacing-xl: 60px;
-  --spacing-xxl: 120px;
-
-  /* 그림자 */
-  --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.12);
-  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.08);
-
-  /* 애니메이션 */
-  --transition-fast: 0.2s ease;
-  --transition-normal: 0.3s ease;
-  --transition-slow: 0.5s ease;
-
-  /* 테두리 반경 */
-  --border-radius-sm: 8px;
-  --border-radius-md: 12px;
-  --border-radius-lg: 18px;
-
-  /* 컨테이너 */
-  --container-width: 1200px;
-  --content-width: 1000px;
-}
-
-/* 기본 스타일 리셋 - 성능 최적화 */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+/* 리셋 및 기본 스타일 */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-/* 초기 렌더링 최적화를 위한 content-visibility 적용 */
-section {
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 1000px; /* 추정 높이 */
-}
-
-html {
-  font-size: 16px;
-  scroll-behavior: smooth;
-  text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  overflow-x: hidden;
+html,
+body {
   width: 100%;
-  /* 다크 모드 강제 비활성화 */
-  color-scheme: light only;
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 body {
-  font-family: var(--font-family);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: var(--text-color);
-  background-color: var(--background-color);
-  line-height: var(--body-line-height);
-  overflow-x: hidden;
-  width: 100%;
-  position: relative;
-  /* 모바일 새로고침 처리 */
-  overscroll-behavior-y: none;
-  text-rendering: optimizeSpeed;
-  /* 화면 깨짐 방지 */
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
-  /* 다크 모드 전환 방지 */
-  forced-color-adjust: none;
+  font-family: "Noto Sans KR", "SF Pro Display", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #1d1d1f;
+  background-color: #ffffff;
 }
 
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-/* 접근성을 위한 포커스 스타일 */
-:focus-visible {
-  outline: 2px solid var(--primary-color);
-  outline-offset: 2px;
-}
-
-/* 검색 엔진 최적화를 위한 텍스트 선택 스타일 */
-::selection {
-  background: rgba(0, 113, 227, 0.2);
-  color: var(--primary-color);
-}
-
-/* 코드 블록 스타일 */
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-/* 이미지 지연 로딩 최적화 */
-img[loading="lazy"] {
-  opacity: 0;
-  transition: opacity var(--transition-normal);
+/* 전역 포커스 스타일 */
+:focus {
+  outline: none;
 }
 
-img[loading="lazy"].loaded {
-  opacity: 1;
+:focus-visible {
+  outline: 2px solid #0071e3;
+  outline-offset: 2px;
 }
 
-/* LCP 최적화 */
-img.hero-bg-image {
+/* 링크 스타일 */
+a {
+  color: #0071e3;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #004c99;
+}
+
+/* 이미지 최적화 스타일 */
+img {
+  max-width: 100%;
+  height: auto;
   display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  will-change: opacity;
-  font-family: var(--font-family); /* alt 텍스트를 위한 접근성 개선 */
 }
 
-/* SEO를 위한 숨겨진 콘텐츠 스타일 - 검색 엔진에서만 표시 */
+/* 접근성 스타일 */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -152,77 +70,198 @@ img.hero-bg-image {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
 }
 
 /* 스크롤바 스타일 */
 ::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #c1c1c1;
-  border-radius: 6px;
-  border: 3px solid #f1f1f1;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
+  background: #a1a1a1;
 }
 
-/* 콘텐츠 랜더링 성능 최적화 */
-.fade-in {
-  will-change: opacity;
-  transform: translateZ(0); /* GPU 가속 */
-}
-
-.slide-in,
-.slide-in-delayed-1,
-.slide-in-delayed-2 {
-  will-change: transform;
-  transform: translateZ(0); /* GPU 가속 */
-  backface-visibility: hidden;
-}
-
-/* 검색 엔진 크롤러용 추가 스타일 */
-.bot-view .sr-only {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: var(--spacing-md) 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  border-width: 0;
-  appearance: auto;
-  display: block;
-  background-color: #f5f9fd;
+/* 선택 스타일 */
+::selection {
+  background-color: rgba(0, 113, 227, 0.2);
   color: #1d1d1f;
-  font-size: 16px;
-  line-height: 1.5;
-  max-width: 900px;
-  margin: 0 auto;
 }
 
-/* 인쇄 최적화 */
+/* 반응형 글꼴 크기 */
+html {
+  font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* 지원되는 모든 브라우저에서 스타일 일관성 유지 */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+button,
+input {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+
+/* 스로틀링 애니메이션 감지 */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 모바일 터치 최적화 */
+@media (hover: none) {
+  a:hover {
+    color: #0071e3;
+  }
+}
+
+/* iOS Safari 호환성 */
+@supports (-webkit-touch-callout: none) {
+  body,
+  html {
+    height: -webkit-fill-available;
+  }
+}
+
+/* 시각적인 접근성 개선 */
+.visually-hidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* 전역 컨테이너 */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 반응형 여백 클래스 */
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.my-1 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.my-3 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.my-4 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.my-5 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* 글자 스타일 */
+.text-center {
+  text-align: center;
+}
+
+.text-bold {
+  font-weight: 700;
+}
+
+.text-primary {
+  color: #0071e3;
+}
+
+/* 애니메이션 최적화 */
+.will-change {
+  will-change: transform, opacity;
+}
+
+/* 이미지 로드 애니메이션 */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in forwards;
+}
+
+/* React 루트 요소 스타일 */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* 프린트 미디어 쿼리 */
 @media print {
   body {
+    background-color: #fff;
     color: #000;
-    background: #fff;
-  }
-
-  section {
-    content-visibility: visible;
-    break-inside: avoid;
-    page-break-inside: avoid;
   }
 
   a {
@@ -232,147 +271,5 @@ img.hero-bg-image {
 
   @page {
     margin: 2cm;
-  }
-}
-
-/* 축소된 모션 선호 사용자를 위한 설정 */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* 다크 모드 미디어 쿼리 무시하기 위한 오버라이드 */
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* 원래의 라이트 모드 색상 유지 */
-    --background-color: #ffffff;
-    --text-color: #1d1d1f;
-    --secondary-color: #86868b;
-    --light-background: #f5f9fd;
-    --footer-background: #fbfbfd;
-    --quote-background: #000000;
-  }
-
-  body {
-    color: var(--text-color);
-    background-color: var(--background-color);
-  }
-
-  img {
-    opacity: 1; /* 다크 모드에서도 이미지 투명도 유지 */
-  }
-
-  /* 다크 모드에서도 라이트 모드 스크롤바 유지 */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #c1c1c1;
-    border: 3px solid #f1f1f1;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #a8a8a8;
-  }
-}
-
-/* 컨테이너 클래스 - 재사용성 및 반응형 최적화 */
-.container {
-  width: 100%;
-  max-width: var(--container-width);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: var(--spacing-md);
-  padding-right: var(--spacing-md);
-}
-
-.content-container {
-  width: 100%;
-  max-width: var(--content-width);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: var(--spacing-md);
-  padding-right: var(--spacing-md);
-}
-
-/* 레이아웃 유틸리티 - 마진 축소 */
-.my-xl {
-  margin-top: var(--spacing-xl);
-  margin-bottom: var(--spacing-xl);
-}
-
-.py-xl {
-  padding-top: var(--spacing-xl);
-  padding-bottom: var(--spacing-xl);
-}
-
-/* 성능 최적화된 반응형 디자인 - 최소한의 미디어 쿼리 */
-@media (max-width: 1200px) {
-  :root {
-    --container-width: 992px;
-    --content-width: 850px;
-  }
-}
-
-@media (max-width: 992px) {
-  :root {
-    --container-width: 768px;
-    --content-width: 700px;
-    --spacing-xl: 40px;
-    --spacing-xxl: 80px;
-  }
-
-  section {
-    content-visibility: auto;
-    contain-intrinsic-size: 1px 800px;
-  }
-}
-
-@media (max-width: 768px) {
-  :root {
-    --container-width: 576px;
-    --content-width: 540px;
-    --spacing-xl: 30px;
-    --spacing-xxl: 60px;
-  }
-
-  html {
-    font-size: 15px;
-  }
-
-  section {
-    content-visibility: auto;
-    contain-intrinsic-size: 1px 600px;
-  }
-}
-
-@media (max-width: 576px) {
-  :root {
-    --container-width: 100%;
-    --content-width: 100%;
-    --spacing-xl: 25px;
-    --spacing-xxl: 50px;
-  }
-
-  html {
-    font-size: 14px;
-  }
-
-  .container,
-  .content-container {
-    padding-left: var(--spacing-md);
-    padding-right: var(--spacing-md);
-  }
-
-  section {
-    content-visibility: auto;
-    contain-intrinsic-size: 1px 500px;
   }
 }

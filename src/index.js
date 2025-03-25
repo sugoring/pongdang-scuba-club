@@ -11,22 +11,6 @@ root.render(
   </React.StrictMode>
 );
 
-// Google Search Console 인증을 위한 메타 태그 추가
-if (process.env.REACT_APP_GOOGLE_VERIFICATION) {
-  const meta = document.createElement("meta");
-  meta.name = "google-site-verification";
-  meta.content = process.env.REACT_APP_GOOGLE_VERIFICATION;
-  document.head.appendChild(meta);
-}
-
-// Naver Search Advisor 인증을 위한 메타 태그 추가
-if (process.env.REACT_APP_NAVER_VERIFICATION) {
-  const naverMeta = document.createElement("meta");
-  naverMeta.name = "naver-site-verification";
-  naverMeta.content = process.env.REACT_APP_NAVER_VERIFICATION;
-  document.head.appendChild(naverMeta);
-}
-
 // 웹 성능 측정
 reportWebVitals(sendToAnalytics);
 
@@ -35,14 +19,37 @@ function sendToAnalytics(metric) {
   // 애널리틱스 서비스를 사용하는 경우 여기에 측정 데이터 전송 코드 작성
   if (process.env.NODE_ENV !== "development") {
     // console.log(metric); // 프로덕션 환경에서는 실제 애널리틱스 서비스로 데이터 전송
+
+    // Google Analytics 이벤트 추적 예시
+    if (window.gtag) {
+      window.gtag("event", "web_vitals", {
+        event_category: "Web Vitals",
+        event_label: metric.name,
+        value: Math.round(metric.value),
+        non_interaction: true,
+      });
+    }
   }
 }
 
-// 구조화된 데이터 사이트맵 링크 추가
-if (process.env.NODE_ENV === "production") {
-  const sitemapLink = document.createElement("link");
-  sitemapLink.rel = "sitemap";
-  sitemapLink.type = "application/xml";
-  sitemapLink.href = "/sitemap.xml";
-  document.head.appendChild(sitemapLink);
+// Google Analytics 설정 (필요한 경우)
+if (
+  process.env.REACT_APP_GA_MEASUREMENT_ID &&
+  process.env.NODE_ENV === "production"
+) {
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${process.env.REACT_APP_GA_MEASUREMENT_ID}`;
+  document.head.appendChild(script);
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    window.dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", process.env.REACT_APP_GA_MEASUREMENT_ID);
+  window.gtag = gtag;
 }
+
+// 참고: 검색엔진 인증 메타 태그 및 사이트맵은 SEOComponent.js로 이동되었습니다.
+// React Helmet을 통해 통합 관리하여 중복 방지 및 효율성 향상

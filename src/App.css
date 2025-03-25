@@ -62,7 +62,6 @@ body {
 }
 
 .hero-content {
-  max-width: 600px;
   padding: 0 22px;
   position: relative;
   z-index: 2;
@@ -172,10 +171,9 @@ main {
 
 /* 소개 섹션 */
 .intro {
+  background-color: white;
+  padding: 120px 22px;
   text-align: center;
-  margin: 120px auto 0px;
-  max-width: 1000px;
-  padding: 0 22px;
 }
 
 .title-container {
@@ -205,7 +203,6 @@ main {
   margin-bottom: 40px;
   color: #1d1d1f;
   line-height: 1.4;
-  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -215,7 +212,6 @@ main {
 }
 
 .intro-desc-container {
-  max-width: 900px;
   margin: 0 auto;
   padding: 20px 0;
 }
@@ -232,40 +228,52 @@ main {
   content: "";
 }
 
-/* 갤러리 섹션 */
+/* 갤러리 섹션 - feature-card와 유사하게 스타일링 */
 .gallery {
-  margin: 60px auto 160px;
-  max-width: 1200px;
-  padding: 0 22px;
+  background-color: #f5f9fd;
+  padding: 120px 22px;
+  text-align: center;
 }
 
 .gallery-container {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .gallery-item {
-  flex: 1;
-  aspect-ratio: 1/1;
+  background-color: #fff;
+  border-radius: 18px;
+  padding: 0; /* 패딩 제거하여 이미지가 테두리에 맞게 채워지도록 함 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden; /* 이미지가 테두리를 넘어가지 않도록 함 */
+}
+
+.gallery-image-container {
+  width: 100%;
+  height: 100%;
   overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
-  max-width: 350px;
+  border-radius: 18px; /* 이미지 컨테이너에도 동일한 border-radius 적용 */
 }
 
 .gallery-item:hover {
   transform: translateY(-10px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
 .gallery-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.8s ease;
+  transition: transform 0.5s ease;
+  display: block;
 }
 
 .gallery-item:hover img {
@@ -274,7 +282,7 @@ main {
 
 /* 특징 섹션 */
 .features {
-  background-color: #f5f9fd;
+  background-color: white;
   padding: 120px 22px;
   text-align: center;
 }
@@ -350,10 +358,9 @@ main {
 
 /* 연락처 섹션 */
 .contact-info {
+  background-color: white;
+  padding: 120px 22px;
   text-align: center;
-  margin: 120px auto;
-  max-width: 800px;
-  padding: 0 22px;
 }
 
 .contact-socials {
@@ -415,7 +422,6 @@ footer {
 }
 
 .footer-content {
-  max-width: 980px;
   margin: 0 auto;
 }
 
@@ -505,11 +511,8 @@ img {
   }
 
   .gallery-container {
-    flex-wrap: wrap;
-  }
-
-  .gallery-item {
-    min-width: 250px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 }
 
@@ -546,48 +549,17 @@ img {
   }
 
   .gallery {
-    margin: 60px auto;
-    padding: 0 15px; /* 갤러리 섹션 전체 패딩 줄임 */
+    margin: 80px auto 120px;
+    padding: 0 15px;
   }
 
   .gallery-container {
-    flex-direction: row;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    padding: 10px 0;
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
   }
 
   .gallery-item {
-    flex: 0 0 auto;
-    width: 250px; /* 모바일에서 더 넓은 이미지 */
-    height: 180px; /* 가로로 더 긴 비율 */
-    scroll-snap-align: center;
-    min-width: 250px;
-    max-width: 300px;
-    aspect-ratio: 16/9; /* 와이드스크린 비율 */
-    margin: 0 10px;
-  }
-
-  .gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: none; /* 모바일에서 애니메이션 제거 */
-  }
-
-  .gallery-item:hover img {
-    transform: none; /* 호버 효과 제거 */
-  }
-
-  /* 스크롤바 숨기기 */
-  .gallery-container::-webkit-scrollbar {
-    display: none;
-  }
-  .gallery-container {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    border-radius: 16px;
   }
 
   .quote-text {
@@ -598,6 +570,10 @@ img {
 @media (max-width: 576px) {
   .feature-cards {
     grid-template-columns: 1fr;
+  }
+
+  .gallery-container {
+    grid-template-columns: 1fr; /* features와 동일하게 1열로 변경 */
   }
 
   .hero-title {
@@ -629,17 +605,12 @@ img {
   }
 
   .gallery {
-    padding: 0 10px; /* 갤러리 섹션 패딩 더 줄임 */
-  }
-
-  .gallery-container {
-    gap: 15px; /* 갤러리 항목 간 간격 더 줄임 */
+    padding: 0 15px;
   }
 
   .gallery-item {
-    margin-bottom: 15px;
     width: 100%;
-    max-width: 280px;
+    max-width: 100%;
   }
 
   .contact-socials {
@@ -651,6 +622,17 @@ img {
   .social-button {
     width: 100%;
     max-width: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery {
+    margin: 40px auto 80px;
+    padding: 0 15px;
+  }
+
+  .gallery-container {
+    gap: 15px;
   }
 }
 
@@ -710,33 +692,11 @@ img {
 /* 모바일 터치 최적화 */
 @media (hover: none) and (pointer: coarse) {
   .gallery-item {
-    transition: none;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
   }
 
   .gallery-item:active {
-    transform: none;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  }
-}
-
-/* 갤러리 섹션 반응형 개선 */
-@media (max-width: 480px) {
-  .gallery {
-    margin: 40px auto 100px;
-    padding: 0 5px; /* 더 작은 화면에서 패딩 최소화 */
-  }
-
-  .gallery-container {
-    gap: 10px; /* 더 작은 화면에서 간격 최소화 */
-  }
-
-  .gallery-item {
-    width: 220px;
-    height: 160px;
-    min-width: 220px;
-    max-width: 250px;
-    margin: 0 8px;
+    transform: scale(0.98); /* 특징 카드와 유사한 클릭 효과 */
   }
 }
 

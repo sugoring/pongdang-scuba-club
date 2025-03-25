@@ -1,17 +1,18 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
 import { Helmet } from "react-helmet";
 import "./App.css";
+import SEOComponent from "./components/SEOComponent"; // 분리된 SEO 컴포넌트 import
 
 // 성능 최적화: 컴포넌트 외부로 구조화된 데이터 이동
 // 구조화된 데이터 (JSON-LD)
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "퐁당 - 강원대학교 스쿠버 다이빙 동아리",
+  name: "퐁당 - 강원대학교 스쿠버 다이빙 중앙동아리",
   url: "https://pongdang-coral.vercel.app",
   logo: "/logo.png",
   description:
-    "강원대학교 스쿠버 다이빙 동아리 퐁당입니다. 강원대학교 춘천 스쿠버 다이빙 동아리입니다.",
+    "강원대학교 스쿠버 다이빙 중앙동아리 퐁당입니다. 강원대학교 춘천 스쿠버 다이빙 동아리입니다.",
   address: {
     "@type": "PostalAddress",
     addressLocality: "춘천시",
@@ -83,7 +84,7 @@ const faqData = {
 const localBusinessData = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "퐁당 - 강원대학교 스쿠버 다이빙 동아리",
+  name: "퐁당 - 강원대학교 스쿠버 다이빙 중앙동아리",
   image: "/assets/pic1.jpg",
   "@id": "https://pongdang-coral.vercel.app",
   url: "https://pongdang-coral.vercel.app",
@@ -111,7 +112,7 @@ const courseData = {
     "강원대학교 재학생을 위한 스쿠버 다이빙 입문 과정입니다. 이론부터 실전까지 체계적으로 배울 수 있습니다.",
   provider: {
     "@type": "Organization",
-    name: "퐁당 - 강원대학교 스쿠버 다이빙 동아리",
+    name: "퐁당 - 강원대학교 스쿠버 다이빙 중앙동아리",
     sameAs: "https://pongdang-coral.vercel.app",
   },
   hasCourseInstance: {
@@ -161,13 +162,13 @@ const breadcrumbData = {
 const sportsClubData = {
   "@context": "https://schema.org",
   "@type": "SportsClub",
-  name: "퐁당 - 강원대학교 스쿠버 다이빙 동아리",
+  name: "퐁당 - 강원대학교 스쿠버 다이빙 중앙동아리",
   sport: "스쿠버다이빙",
   url: "https://pongdang-coral.vercel.app",
   logo: "/logo.png",
   image: "/assets/pic1.jpg",
   description:
-    "강원대학교 스쿠버 다이빙 동아리 퐁당입니다. 강원대학교 춘천 스쿠버 다이빙 동아리입니다. 수영 실력과 상관없이 참여할 수 있습니다.",
+    "강원대학교 스쿠버 다이빙 중앙동아리 퐁당입니다. 강원대학교 춘천 스쿠버 다이빙 동아리입니다. 수영 실력과 상관없이 참여할 수 있습니다.",
   address: {
     "@type": "PostalAddress",
     addressLocality: "춘천시",
@@ -240,145 +241,13 @@ function App() {
   return (
     <div className="app">
       {/* SEO를 위한 React Helmet */}
-      <Helmet>
-        {/* 기본 메타 태그 */}
-        <title>
-          강원대학교 스쿠버다이빙 동아리 퐁당 | 춘천 스쿠버 | 강원대
-          스쿠버동아리
-        </title>
-        <meta
-          name="description"
-          content="강원대학교 스쿠버 다이빙 동아리 퐁당입니다. 강원대학교 춘천 스쿠버 다이빙 동아리로, 자체 강사 보유 및 바다 투어를 진행합니다."
-        />
-        <meta
-          name="keywords"
-          content="강원대학교, 강원대, 강원대 동아리, 스쿠버다이빙, 춘천 스쿠버, 퐁당, 다이빙 동아리, 스쿠버 자격증, 바다 투어, 수중 활동, 강원도 스쿠버다이빙, 춘천 다이빙, 강원대 스쿠버 동아리, 해양 스포츠, 스킨스쿠버, 다이빙 교육, 스쿠버 체험"
-        />
-        <meta
-          name="robots"
-          content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-        />
-        <meta name="language" content="Korean" />
-        <meta name="author" content="퐁당 - 강원대학교 스쿠버 다이빙 동아리" />
-        <meta name="geo.region" content="KR-42" />
-        <meta name="geo.placename" content="Chuncheon" />
-        <meta name="geo.position" content="37.8731;127.7443" />
-        <meta name="ICBM" content="37.8731, 127.7443" />
-        <link rel="canonical" href={siteUrl} />
-
-        {/* 서치 콘솔 인증 */}
-        <meta
-          name="naver-site-verification"
-          content="692f519e06cd140f805d94b2aa98d3c43cf7110a"
-        />
-        <meta
-          name="google-site-verification"
-          content="hc4GzRqVd75nG-TG00f74DbtpelQ425_aUfAYFTbEFA"
-        />
-
-        {/* 모바일 최적화 메타 태그 */}
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
-        />
-        <meta name="theme-color" content="#0071e3" />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta
-          name="apple-mobile-web-app-status-bar-style"
-          content="black-translucent"
-        />
-        <meta name="apple-mobile-web-app-title" content="강원대 스쿠버 퐁당" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="HandheldFriendly" content="True" />
-        <meta name="MobileOptimized" content="320" />
-
-        {/* 오픈 그래프 태그 */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={siteUrl} />
-        <meta
-          property="og:title"
-          content="강원대학교 스쿠버다이빙 동아리 퐁당 | 춘천 춘천 스쿠버 다이빙"
-        />
-        <meta
-          property="og:description"
-          content=" 강원대학교 스쿠버 다이빙 동아리. 수영 실력 상관없이 참여 가능. 춘천에서 스쿠버다이빙을 시작하세요!"
-        />
-        <meta property="og:image" content={`${siteUrl}/assets/pic1.jpg`} />
-        <meta
-          property="og:image:alt"
-          content="강원대학교 스쿠버 다이빙 동아리 퐁당 단체 사진"
-        />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:locale" content="ko_KR" />
-        <meta
-          property="og:site_name"
-          content="강원대학교 스쿠버다이빙 동아리 퐁당"
-        />
-
-        {/* 트위터 카드 */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="강원대학교 스쿠버다이빙 동아리 퐁당 | 춘천 춘천 스쿠버 다이빙"
-        />
-        <meta
-          name="twitter:description"
-          content=" 강원대학교 스쿠버 다이빙 동아리. 수영 실력 상관없이 참여 가능."
-        />
-        <meta name="twitter:image" content={`${siteUrl}/assets/pic1.jpg`} />
-        <meta
-          name="twitter:image:alt"
-          content="강원대학교 스쿠버 다이빙 동아리 퐁당 단체 사진"
-        />
-
-        {/* 구조화된 데이터 */}
-        <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
-        <script type="application/ld+json">{JSON.stringify(faqData)}</script>
-        <script type="application/ld+json">
-          {JSON.stringify(localBusinessData)}
-        </script>
-        <script type="application/ld+json">{JSON.stringify(courseData)}</script>
-        <script type="application/ld+json">
-          {JSON.stringify(breadcrumbData)}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify(sportsClubData)}
-        </script>
-
-        {/* DNS Prefetch 및 리소스 최적화 */}
-        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-        <link rel="dns-prefetch" href="//www.googletagmanager.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.googleapis.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-
-        {/* 리소스 프리로드 */}
-        <link rel="preload" href={`${baseUrl}/assets/pic1.jpg`} as="image" />
-        <link rel="preload" href={`${baseUrl}/logo.png`} as="image" />
-
-        {/* 사이트맵 및 파비콘 */}
-        <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/logo.png" />
-      </Helmet>
+      <SEOComponent siteUrl={siteUrl} baseUrl={baseUrl} />
 
       {/* SEO를 위한 숨겨진 텍스트 (사용자에게 보이지 않음) */}
       <div className="sr-only" aria-hidden="true">
-        <h2>강원대학교 스쿠버 다이빙 동아리 퐁당</h2>
+        <h2>강원대학교 스쿠버 다이빙 중앙동아리 퐁당</h2>
         <p>
-          강원대학교 스쿠버 다이빙 동아리 퐁당은 강원대학교 재학생들을 위한
+          강원대학교 스쿠버 다이빙 중앙동아리 퐁당은 강원대학교 재학생들을 위한
           스쿠버 동아리입니다. 수영을 못하더라도 스쿠버 다이빙을 배울 수 있으며,
           동아리 내 전문 강사진이 체계적인 교육을 제공합니다.
         </p>
@@ -418,7 +287,7 @@ function App() {
           <div className="hero-background">
             <img
               src={`${baseUrl}/assets/pic1.jpg`}
-              alt="강원대 스쿠버 다이빙 동아리 퐁당 바닷속 단체사진"
+              alt="강원대 스쿠버 다이빙 중앙동아리 퐁당 바닷속 단체사진"
               className="hero-bg-image"
               loading="eager"
               width="1920"
@@ -434,7 +303,7 @@ function App() {
               바다에 낭만을 더하다
             </p>
             <p className="hero-subtitle slide-in-delayed-2">
-              강원대학교 스쿠버 다이빙 동아리
+              강원대학교 스쿠버 다이빙 중앙동아리
             </p>
           </div>
         </header>
@@ -445,7 +314,10 @@ function App() {
             <h2 id="intro-title" className="section-title">
               지금 바로
             </h2>
-            <span className="section-title-bold">'퐁당'하세요</span>
+            <span className="section-title-bold">'퐁당'</span>
+            <h2 id="intro-title" className="section-title">
+              하세요
+            </h2>
           </div>
           <p className="intro-lead">
             지루한 대학생활에서 벗어나,{" "}
@@ -462,42 +334,53 @@ function App() {
           </div>
         </section>
 
-        {/* 갤러리 섹션 */}
+        {/* 갤러리 섹션 - feature-card와 유사하게 스타일링 */}
         <section
           className="gallery"
           id="gallery"
           aria-label="스쿠버 다이빙 활동 갤러리"
         >
+          <div className="title-container">
+            <h2 className="section-title">퐁당의</h2>
+            <span className="section-title-bold">활동</span>
+          </div>
+
           <div className="gallery-container">
             <div className="gallery-item">
-              <img
-                src={`${baseUrl}/assets/pic3.jpg`}
-                alt="강원대 스쿠버 다이빙 동아리 활동 사진 - 해양 생물 관찰"
-                loading="lazy"
-                width="350"
-                height="350"
-                onLoad={handleImageLoaded}
-              />
+              <div className="gallery-image-container">
+                <img
+                  src={`${baseUrl}/assets/pic3.jpg`}
+                  alt="강원대 스쿠버 다이빙 동아리 활동 사진 - 해양 생물 관찰"
+                  loading="lazy"
+                  width="350"
+                  height="350"
+                  onLoad={handleImageLoaded}
+                />
+              </div>
             </div>
             <div className="gallery-item">
-              <img
-                src={`${baseUrl}/assets/pic2.jpg`}
-                alt="춘천 스쿠버 다이빙 활동 모습 - 수중 장비 체험"
-                loading="lazy"
-                width="350"
-                height="350"
-                onLoad={handleImageLoaded}
-              />
+              <div className="gallery-image-container">
+                <img
+                  src={`${baseUrl}/assets/pic2.jpg`}
+                  alt="춘천 스쿠버 다이빙 활동 모습 - 수중 장비 체험"
+                  loading="lazy"
+                  width="350"
+                  height="350"
+                  onLoad={handleImageLoaded}
+                />
+              </div>
             </div>
             <div className="gallery-item">
-              <img
-                src={`${baseUrl}/assets/pic5.jpg`}
-                alt="강원대 퐁당 스쿠버 다이빙 교육 - 안전 교육"
-                loading="lazy"
-                width="350"
-                height="350"
-                onLoad={handleImageLoaded}
-              />
+              <div className="gallery-image-container">
+                <img
+                  src={`${baseUrl}/assets/pic5.jpg`}
+                  alt="강원대 퐁당 스쿠버 다이빙 교육 - 안전 교육"
+                  loading="lazy"
+                  width="350"
+                  height="350"
+                  onLoad={handleImageLoaded}
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -599,7 +482,7 @@ function App() {
       <footer>
         <div className="footer-content">
           <p className="copyright">
-            © 2025 강원대학교 스쿠버 다이빙 동아리 '퐁당'
+            © 2025 강원대학교 스쿠버 다이빙 중앙동아리 '퐁당'
           </p>
           <p className="address">
             <a

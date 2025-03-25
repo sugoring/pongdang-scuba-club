@@ -1,44 +1,43 @@
 # 강원대학교 스쿠버다이빙 동아리 퐁당 - robots.txt
-# https://pongdang-coral.vercel.app
+# 웹사이트: https://pongdang-coral.vercel.app
+# 최종 업데이트: 2025-03-25
 
 # 모든 검색 엔진 크롤러에 적용
 User-agent: *
 Allow: /
-Allow: /assets/
-Allow: /static/
-Allow: /about
-Allow: /gallery
-Allow: /contact
-Allow: /faq
 
-# 중복 콘텐츠 및 개발용 파일 차단
-Disallow: /404
-Disallow: /_next/
-Disallow: /api/
-Disallow: /admin/
-Disallow: /*?*
-
-# 미디어 파일 차단 (이미 액세스 가능한 파일들)
-Disallow: /*.jpg$
-Disallow: /*.jpeg$
-Disallow: /*.png$
-Disallow: /*.gif$
-
-# 네이버 검색엔진 특화 설정
-User-agent: Yeti
-Allow: /
-Allow: /assets/
-Allow: /static/
-Disallow: /404
-Disallow: /_next/
-Disallow: /api/
-Disallow: /admin/
-
-# 크롤링 속도 제한
-Crawl-delay: 1
-
-# 사이트맵 위치
+# Sitemap 위치
 Sitemap: https://pongdang-coral.vercel.app/sitemap.xml
 
-# 호스트 정보
-Host: https://pongdang-coral.vercel.app
+# 소셜 미디어 크롤러를 위한 특별 규칙
+User-agent: Twitterbot
+Allow: /
+Disallow: /js/
+Disallow: /css/
+
+User-agent: facebookexternalhit
+Allow: /
+Disallow: /js/
+Disallow: /css/
+
+# 검색 엔진별 특수 설정
+# 네이버 검색 로봇
+User-agent: Yeti
+Allow: /
+Crawl-delay: 1
+
+# 구글 이미지 검색 로봇 - 모든 이미지 허용
+User-agent: Googlebot-Image
+Allow: /assets/
+Allow: /logo.png
+Allow: /favicon.ico
+
+# 바이두 검색 로봇 - 중국어 검색 최적화를 위해
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+# 불필요한 디렉토리 제한
+Disallow: /node_modules/
+Disallow: /build/
+Disallow: /.github/

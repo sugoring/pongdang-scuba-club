@@ -1,87 +1,90 @@
 {
-  "short_name": "퐁당",
   "name": "강원대학교 스쿠버다이빙 동아리 퐁당",
-  "description": "강원대학교 스쿠버 다이빙 동아리 퐁당입니다. 강원대학교 스쿠버 다이빙 동아리입니다.",
+  "short_name": "퐁당",
+  "description": "강원대학교 춘천캠퍼스 중앙동아리 퐁당은 수영 실력과 상관없이 스쿠버 다이빙을 배울 수 있는 동아리입니다. 자체 강사 보유, 바다 투어 진행, 오픈워터 자격증 취득까지!",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0071e3",
+  "orientation": "portrait",
+  "lang": "ko-KR",
+  "dir": "ltr",
+  "categories": ["sports", "education", "university", "scuba diving"],
+  "scope": "/",
+  "id": "pongdang-scuba-diving-club",
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "64x64",
       "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "any maskable"
     },
     {
       "src": "logo.png",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "any"
-    }
-  ],
-  "id": "/",
-  "start_url": "/?source=pwa",
-  "scope": "/",
-  "display": "standalone",
-  "orientation": "portrait",
-  "theme_color": "#0071e3",
-  "background_color": "#ffffff",
-  "prefer_related_applications": false,
-  "lang": "ko-KR",
-  "dir": "ltr",
-  "categories": ["education", "sports", "lifestyle"],
-  "screenshots": [
+    },
     {
-      "src": "assets/pic1.jpg",
-      "type": "image/jpeg",
-      "sizes": "1920x1080",
-      "form_factor": "wide"
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
     }
   ],
   "shortcuts": [
     {
-      "name": "소개",
+      "name": "동아리 소개",
+      "short_name": "소개",
+      "description": "퐁당 동아리 소개 페이지",
       "url": "/#intro",
-      "description": "퐁당 동아리 소개"
+      "icons": [{ "src": "logo.png", "sizes": "192x192" }]
     },
     {
       "name": "갤러리",
+      "short_name": "갤러리",
+      "description": "퐁당 활동 사진",
       "url": "/#gallery",
-      "description": "다이빙 활동 갤러리"
+      "icons": [{ "src": "logo.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "퐁당의 특별함",
+      "short_name": "특별함",
+      "description": "퐁당 동아리의 특별한 점",
+      "url": "/#features",
+      "icons": [{ "src": "logo.png", "sizes": "192x192" }]
     },
     {
       "name": "연락처",
+      "short_name": "연락처",
+      "description": "퐁당 동아리 연락처",
       "url": "/#contact",
-      "description": "연락처 정보"
+      "icons": [{ "src": "logo.png", "sizes": "192x192" }]
     }
   ],
-  "serviceworker": {
-    "src": "/service-worker.js",
-    "scope": "/",
-    "use_cache": true
-  },
-  "share_target": {
-    "action": "/share",
-    "method": "GET",
-    "params": {
-      "title": "title",
-      "text": "text",
-      "url": "url"
-    }
-  },
-  "iarc_rating_id": "",
-  "related_applications": [
+  "screenshots": [
     {
-      "platform": "web",
-      "url": "https://pongdang-coral.vercel.app"
+      "src": "assets/pic1.jpg",
+      "type": "image/jpg",
+      "sizes": "1920x1080",
+      "form_factor": "wide",
+      "label": "강원대학교 스쿠버 다이빙 중앙동아리 퐁당 단체 사진"
+    },
+    {
+      "src": "assets/pic3.jpg",
+      "type": "image/jpg",
+      "sizes": "350x350",
+      "form_factor": "narrow",
+      "label": "강원대 스쿠버 다이빙 동아리 활동 - 해양생물 관찰"
     }
-  ]
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "iarc_rating_id": "",
+  "handle_links": "preferred",
+  "launch_handler": {
+    "client_mode": ["focus-existing", "auto"]
+  },
+  "edge_side_panel": {
+    "preferred_width": 480
+  }
 }

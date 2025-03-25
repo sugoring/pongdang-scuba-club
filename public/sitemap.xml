@@ -1,73 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
-        xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd
+                      http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd">
 
   <!-- 메인 페이지 -->
   <url>
-    <loc>https://pongdang-coral.vercel.app/</loc>
-    <lastmod>2025-03-24T12:00:00+09:00</lastmod>
+    <loc>https://pongdang-coral.vercel.app</loc>
+    <lastmod>2025-03-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <mobile:mobile/>
     <image:image>
       <image:loc>https://pongdang-coral.vercel.app/assets/pic1.jpg</image:loc>
-      <image:title>강원대학교 스쿠버 다이빙 동아리 퐁당 단체 사진</image:title>
-      <image:caption>강원대학교 스쿠버 다이빙 동아리 퐁당의 바닷속 활동 모습</image:caption>
+      <image:title>강원대학교 스쿠버 다이빙 중앙동아리 퐁당 단체 사진</image:title>
+      <image:caption>강원대학교 스쿠버 다이빙 중앙동아리 퐁당의 바다 활동 모습</image:caption>
     </image:image>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://pongdang-coral.vercel.app/"/>
+    <image:image>
+      <image:loc>https://pongdang-coral.vercel.app/logo.png</image:loc>
+      <image:title>퐁당 로고</image:title>
+      <image:caption>강원대학교 스쿠버 다이빙 중앙동아리 퐁당 로고</image:caption>
+    </image:image>
   </url>
 
-  <!-- 소개 페이지 앵커 -->
+  <!-- 소개 섹션 (앵커 링크) -->
   <url>
     <loc>https://pongdang-coral.vercel.app/#intro</loc>
-    <lastmod>2025-03-24T12:00:00+09:00</lastmod>
+    <lastmod>2025-03-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <mobile:mobile/>
+    <priority>0.8</priority>
   </url>
 
-  <!-- 갤러리 페이지 앵커 -->
+  <!-- 갤러리 섹션 (앵커 링크) -->
   <url>
     <loc>https://pongdang-coral.vercel.app/#gallery</loc>
-    <lastmod>2025-03-24T12:00:00+09:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2025-03-25</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <mobile:mobile/>
-    <image:image>
-      <image:loc>https://pongdang-coral.vercel.app/assets/pic3.jpg</image:loc>
-      <image:title>강원대 스쿠버 다이빙 동아리 활동 사진</image:title>
-    </image:image>
     <image:image>
       <image:loc>https://pongdang-coral.vercel.app/assets/pic2.jpg</image:loc>
       <image:title>춘천 스쿠버 다이빙 활동 모습</image:title>
+      <image:caption>스쿠버 다이빙 장비 체험</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://pongdang-coral.vercel.app/assets/pic3.jpg</image:loc>
+      <image:title>강원대 스쿠버 다이빙 동아리 활동</image:title>
+      <image:caption>해양 생물 관찰 활동</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://pongdang-coral.vercel.app/assets/pic5.jpg</image:loc>
       <image:title>강원대 퐁당 스쿠버 다이빙 교육</image:title>
+      <image:caption>안전 교육 진행 모습</image:caption>
     </image:image>
   </url>
 
-  <!-- 특징 섹션 앵커 -->
+  <!-- 특징 섹션 (앵커 링크) -->
   <url>
     <loc>https://pongdang-coral.vercel.app/#features</loc>
-    <lastmod>2025-03-24T12:00:00+09:00</lastmod>
+    <lastmod>2025-03-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <mobile:mobile/>
+    <priority>0.9</priority>
   </url>
 
-  <!-- 연락처 섹션 앵커 -->
+  <!-- 연락처 섹션 (앵커 링크) -->
   <url>
     <loc>https://pongdang-coral.vercel.app/#contact</loc>
-    <lastmod>2025-03-24T12:00:00+09:00</lastmod>
+    <lastmod>2025-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <mobile:mobile/>
   </url>
 
 </urlset>
