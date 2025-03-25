@@ -171,7 +171,6 @@ main {
 
 /* 소개 섹션 */
 .intro {
-  background-color: white;
   padding: 120px 22px;
   text-align: center;
 }
@@ -236,6 +235,7 @@ main {
 }
 
 .gallery-container {
+  background-color: #f5f9fd;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
@@ -244,7 +244,7 @@ main {
 }
 
 .gallery-item {
-  background-color: #fff;
+  background-color: #f5f9fd;
   border-radius: 18px;
   padding: 0; /* 패딩 제거하여 이미지가 테두리에 맞게 채워지도록 함 */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -282,7 +282,6 @@ main {
 
 /* 특징 섹션 */
 .features {
-  background-color: white;
   padding: 120px 22px;
   text-align: center;
 }
@@ -358,7 +357,6 @@ main {
 
 /* 연락처 섹션 */
 .contact-info {
-  background-color: white;
   padding: 120px 22px;
   text-align: center;
 }
@@ -704,6 +702,6 @@ img {
 @supports (animation-timeline: scroll()) {
   .hero-content {
     animation-timeline: view();
-    animation-range: entry 10% cover 20%;
+    animation-range: entry 0% cover 0%;
   }
 }

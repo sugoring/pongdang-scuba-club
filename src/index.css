@@ -24,6 +24,8 @@ body {
   line-height: 1.6;
   color: #1d1d1f;
   background-color: #ffffff;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 code {
@@ -74,22 +76,21 @@ img {
 
 /* 스크롤바 스타일 */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 0;
+  height: 0;
+  display: none;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
+  display: none;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 10px;
+  display: none;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a1a1a1;
+  display: none;
 }
 
 /* 선택 스타일 */
