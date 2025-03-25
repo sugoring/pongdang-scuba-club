@@ -171,7 +171,7 @@ main {
 
 /* 소개 섹션 */
 .intro {
-  padding: 120px 22px;
+  padding: 100px 22px;
   text-align: center;
 }
 
@@ -230,7 +230,7 @@ main {
 /* 갤러리 섹션 - feature-card와 유사하게 스타일링 */
 .gallery {
   background-color: #f5f9fd;
-  padding: 120px 22px;
+  padding: 100px 22px;
   text-align: center;
 }
 
@@ -282,7 +282,7 @@ main {
 
 /* 특징 섹션 */
 .features {
-  padding: 120px 22px;
+  padding: 100px 22px;
   text-align: center;
 }
 
@@ -332,7 +332,7 @@ main {
 /* 인용구 섹션 */
 .quote-section {
   background-color: #000000;
-  padding: 120px 22px;
+  padding: 100px 22px;
   text-align: center;
 }
 
@@ -357,7 +357,7 @@ main {
 
 /* 연락처 섹션 */
 .contact-info {
-  padding: 120px 22px;
+  padding: 100px 22px;
   text-align: center;
 }
 
@@ -532,10 +532,6 @@ img {
     font-size: 36px;
   }
 
-  .intro {
-    margin: 80px auto 120px;
-  }
-
   .intro-lead {
     font-size: 28px;
     margin-bottom: 25px;
@@ -544,20 +540,6 @@ img {
   .intro-desc {
     font-size: 17px;
     line-height: 1.7;
-  }
-
-  .gallery {
-    margin: 80px auto 120px;
-    padding: 0 15px;
-  }
-
-  .gallery-container {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-  }
-
-  .gallery-item {
-    border-radius: 16px;
   }
 
   .quote-text {
@@ -602,15 +584,6 @@ img {
     font-size: 16px;
   }
 
-  .gallery {
-    padding: 0 15px;
-  }
-
-  .gallery-item {
-    width: 100%;
-    max-width: 100%;
-  }
-
   .contact-socials {
     flex-direction: column;
     align-items: center;
@@ -620,17 +593,6 @@ img {
   .social-button {
     width: 100%;
     max-width: 280px;
-  }
-}
-
-@media (max-width: 480px) {
-  .gallery {
-    margin: 40px auto 80px;
-    padding: 0 15px;
-  }
-
-  .gallery-container {
-    gap: 15px;
   }
 }
 
@@ -660,6 +622,10 @@ img {
     text-shadow: none !important;
     background: none !important;
     -webkit-text-fill-color: #000 !important;
+  }
+
+  .gallery-container {
+    grid-template-columns: 1fr;
   }
 
   .feature-cards {
