@@ -1,10 +1,7 @@
-import React, { useState, useEffect, lazy, Suspense } from "react";
-import { Helmet } from "react-helmet";
+import React, { useState, useEffect } from "react";
 import "./App.css";
-import SEOComponent from "./components/SEOComponent"; // 분리된 SEO 컴포넌트 import
+import SEOComponent from "./components/SEOComponent";
 
-// 성능 최적화: 컴포넌트 외부로 구조화된 데이터 이동
-// 구조화된 데이터 (JSON-LD)
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -32,7 +29,6 @@ const structuredData = {
   ],
 };
 
-// FAQ 구조화된 데이터
 const faqData = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -80,7 +76,6 @@ const faqData = {
   ],
 };
 
-// 지역 비즈니스 구조화된 데이터 추가
 const localBusinessData = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -103,7 +98,6 @@ const localBusinessData = {
   },
 };
 
-// 코스 제공 구조화된 데이터 추가
 const courseData = {
   "@context": "https://schema.org",
   "@type": "Course",
@@ -132,7 +126,6 @@ const courseData = {
   },
 };
 
-// 브레드크럼 구조화된 데이터 추가
 const breadcrumbData = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -158,7 +151,6 @@ const breadcrumbData = {
   ],
 };
 
-// 스포츠 클럽 구조화된 데이터 추가 (SEO 강화)
 const sportsClubData = {
   "@context": "https://schema.org",
   "@type": "SportsClub",
@@ -180,7 +172,6 @@ const sportsClubData = {
   membershipRequirements: "강원대학교 재학생만 가입 가능",
 };
 
-// 이미지 미리 로드를 위한 함수
 const preloadImage = (src) => {
   return new Promise((resolve, reject) => {
     const img = new Image();
@@ -190,7 +181,6 @@ const preloadImage = (src) => {
   });
 };
 
-// 이미지 로드 완료 이벤트 처리 함수
 const handleImageLoaded = (event) => {
   event.target.classList.add("loaded");
 };
@@ -200,7 +190,6 @@ function App() {
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const baseUrl = process.env.PUBLIC_URL || "";
 
-  // 스크롤 이벤트 핸들러
   useEffect(() => {
     const handleScroll = () => {
       setScrollPosition(window.scrollY);
@@ -212,7 +201,6 @@ function App() {
     };
   }, []);
 
-  // 이미지 미리 로드
   useEffect(() => {
     const loadImages = async () => {
       try {
@@ -228,14 +216,13 @@ function App() {
         setImagesLoaded(true);
       } catch (error) {
         console.error("이미지 로드 오류:", error);
-        setImagesLoaded(true); // 오류가 있어도 계속 진행
+        setImagesLoaded(true);
       }
     };
 
     loadImages();
   }, [baseUrl]);
 
-  // 웹사이트 URL 정규화
   const siteUrl = "https://pongdang-coral.vercel.app";
 
   return (
@@ -342,7 +329,7 @@ function App() {
         >
           <div className="title-container">
             <h2 className="section-title">퐁당의</h2>
-            <span className="section-title-bold">활동</span>
+            <span className="section-title-bold">갤러리</span>
           </div>
 
           <div className="gallery-container">
